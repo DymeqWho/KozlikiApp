@@ -1,5 +1,6 @@
 package com.dymitrmisiejuk.kozliki.rolelogic.rolecontroller;
 
+import com.dymitrmisiejuk.kozliki.rolelogic.rolemodel.dto.LoginInfo;
 import com.dymitrmisiejuk.kozliki.rolelogic.roleservice.ModelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +16,7 @@ public class RoleController {
     private final ModelService modelService;
 
     @PostMapping(path = "/api/login")
-    public String logIn(@RequestBody String login, String password){
-      return modelService.logIn(login, password);
+    public String logIn(@RequestBody LoginInfo loginInfo){
+      return modelService.logIn(loginInfo);
     }
 }
