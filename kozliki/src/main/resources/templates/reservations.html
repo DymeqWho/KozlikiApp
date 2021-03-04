@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Rezerwacje</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">-->
     <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div>
+<div id="reservation_form">
     <form th:action="@{/reservations}" method="post" class="form-control-plaintext" th:object="${newReservation}">
         <label class="col-form-label">
             Od kiedy?
-            <input class="input-group-text" type="date" th:field="*{fromWhen}">
+            <input class="input-group-text" type="date" th:field="*{{fromWhen}}">
 
         </label>
         <br/>
 
         <label class=" col-form-label"> Do kiedy?
-            <input class="input-group-text" type="date" th:field="*{tillWhen}">
+            <input class="input-group-text" type="date" th:field="*{{tillWhen}}">
 
         </label>
 
         <br/>
 
         <label class="col-form-label" for="who"> Kto?</label>
-        <input class="input-group-text" type="text" id="who" th:field="*{who}">
+        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?">
 
 
         <br/>
 
         <label class="col-form-label" for="what"> Co? </label>
-        <input class="input-group-text" type="text" id="what" th:field="*{what}">
+        <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?">
 
 
         <br/>
 
         <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
-        <input class="input-group-text" type="text" id="notes" th:field="*{notes}">
+        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki">
 
 
         <br/>
@@ -45,13 +45,18 @@
         <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
     </form>
 </div>
-<div th:each="reservation : ${reservations}">
 
-    <p th:text="${#dates.format(reservation.fromWhen, 'dd-MM-yyyy')}"></p>
-    <p th:text="${#dates.format(reservation.tillWhen, 'dd-MM-yyyy')}"></p>
-    <p th:text="${reservation.who}"></p>
-    <p th:text="${reservation.what}"></p>
-    <p th:text="${reservation.notes}"></p>
+<br/>
+
+<div th:each="reservation : ${reservations}" id="reservation_result">
+
+    Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span> do: <span
+        th:text="${reservation.tillWhen}"></span>
+    <br/>
+    Przez: <span th:text="${reservation.who}"></span>
+    i obejmuje: <span th:text="${reservation.what}"></span>
+    <br/>
+    Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
     <br/>
 
 </div>

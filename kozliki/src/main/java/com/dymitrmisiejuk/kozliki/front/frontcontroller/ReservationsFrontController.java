@@ -28,9 +28,9 @@ public class ReservationsFrontController {
 
     @PostMapping(path = "/reservations")
     public String addReservation(@ModelAttribute("newReservation") ReservationFrontRequest reservationFrontRequest, Errors errors) {
-//        if (errors.hasErrors()) {
-//            return "reservations";
-//        }
+        if (errors.hasErrors()) {
+            return "reservations";
+        }
         reservationService.createReservation(ReservationRequest.builder()
                 .fromWhen(reservationFrontRequest.getFromWhen())
                 .tillWhen(reservationFrontRequest.getTillWhen())
