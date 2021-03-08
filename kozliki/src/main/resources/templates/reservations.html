@@ -59,6 +59,8 @@
     Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
     <br/>
 
+    <a th:href="@{'/reservations/update/' + ${reservation.id}}"><button type="submit" value="edit">Edytuj</button></a>
+    <a th:href="@{'/reservations/delete/' + ${reservation.id}}"><button type="submit" value="edit">Usuń</button></a>
 </div>
 
 </body>

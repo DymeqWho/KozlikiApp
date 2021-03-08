@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Reservation</title>
+    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/reservations/update/{id}(id=${reservationEntity.id})}"
+      th:object="${reservationEntity}"
+      method="post">
+    <label class="col-form-label">
+        Od kiedy?
+        <input class="input-group-text" type="date" th:field="*{{fromWhen}}">
+
+    </label>
+    <br/>
+
+    <label class=" col-form-label"> Do kiedy?
+        <input class="input-group-text" type="date" th:field="*{{tillWhen}}">
+
+    </label>
+
+    <br/>
+
+    <label class="col-form-label" for="who"> Kto?</label>
+    <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?">
+
+
+    <br/>
+
+    <label class="col-form-label" for="what"> Co? </label>
+    <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?">
+
+
+    <br/>
+
+    <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
+    <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki">
+
+
+    <br/>
+
+    <button class="btn-dark" type="submit" value="zmień rezerwację">Zmień rezerwację</button>
+</form>
+
+</body>
+</html>
