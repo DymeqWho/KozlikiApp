@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,7 +28,12 @@ public class ReservationsFrontController {
 
     @GetMapping("/reservations")
     public String getAllReservations(Model model) {
-        model.addAttribute("reservations", reservationRepository.findAll());
+        Comparator<ReservationEntity> byTillWhen = Comparator.comparing(ReservationEntity::getTillWhen);
+        List<ReservationEntity> list = reservationRepository.findAll()
+                .stream()
+                .sorted(byTillWhen)
+                .collect(Collectors.toList());
+        model.addAttribute("reservations", list);
         model.addAttribute("newReservation", new ReservationFrontRequest());
         return "reservations";
     }
@@ -73,4 +80,5 @@ public class ReservationsFrontController {
         reservationService.deleteReservation(id);
         return "redirect:/reservations";
     }
+
 }
