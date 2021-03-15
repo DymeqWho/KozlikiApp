@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Rezerwacje</title>
     <!--    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">-->
+
     <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -48,7 +51,7 @@
 
 <br/>
 
-<div th:each="reservation : ${reservations}" id="reservation_result">
+<div th:each="reservation : ${reservations}" id="reservation_result" >
 
     Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span> do: <span
         th:text="${reservation.tillWhen}"></span>
@@ -59,9 +62,15 @@
     Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
     <br/>
 
-    <a th:href="@{'/reservations/update/' + ${reservation.id}}"><button type="submit" value="edit">Edytuj</button></a>
-    <a th:href="@{'/reservations/delete/' + ${reservation.id}}"><button type="submit" value="edit">Usuń</button></a>
+    <div sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{'/reservations/update/' + ${reservation.id}}"><button type="submit" value="edit">Edytuj</button></a>
+        <a th:href="@{'/reservations/delete/' + ${reservation.id}}"><button type="submit" value="delete">Usuń</button></a>
+    </div>
+
 </div>
+
+<br />
+<a th:href="@{'/logout'}"><button type="submit" value="logout">Wyloguj</button></a>
 
 </body>
 </html>

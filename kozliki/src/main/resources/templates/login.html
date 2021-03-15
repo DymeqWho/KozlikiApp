@@ -5,6 +5,7 @@
     <title>Login</title>
 </head>
 <body>
+<p th:if="${loginError}" class="error">Niepoprawny login lub hasło</p>
 <form th:action="@{/login-process}" method="post">
 
     <label for="inputLogin">Login:</label>
