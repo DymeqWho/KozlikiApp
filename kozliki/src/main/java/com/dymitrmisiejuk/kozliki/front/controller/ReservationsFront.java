@@ -6,18 +6,14 @@ import com.dymitrmisiejuk.kozliki.reservation.model.dto.ReservationRequest;
 import com.dymitrmisiejuk.kozliki.reservation.repository.ReservationRepository;
 import com.dymitrmisiejuk.kozliki.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
@@ -25,9 +21,14 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-public class ReservationsFront {
+public class ReservationsFront implements WebMvcConfigurer {
     private final ReservationRepository reservationRepository;
     private final ReservationService reservationService;
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/reservations").setViewName("reservations");
+    }
 
     @GetMapping("/reservations")
     public String getAllReservations(Model model) {
@@ -42,8 +43,8 @@ public class ReservationsFront {
     }
 
     @PostMapping(path = "/reservations")
-    public String addReservation(@ModelAttribute("newReservation") ReservationFrontRequest reservationFrontRequest, Errors errors) {
-        if (errors.hasErrors()) {
+        public String addReservation(@ModelAttribute("newReservation") @Valid ReservationFrontRequest reservationFrontRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "reservations";
         }
         reservationService.createReservation(ReservationRequest.builder()
@@ -78,7 +79,7 @@ public class ReservationsFront {
         return "redirect:/reservations";
     }
 
-    @GetMapping ("reservations/delete/{id}")
+    @PostMapping("reservations/delete/{id}")
     public String deleteNote(@PathVariable("id") Long id) {
         reservationService.deleteReservation(id);
         return "redirect:/reservations";

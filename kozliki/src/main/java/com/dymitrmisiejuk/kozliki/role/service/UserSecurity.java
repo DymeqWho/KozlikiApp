@@ -53,7 +53,7 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
                 .hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                 .antMatchers(HttpMethod.POST, "/reservations/update/**")
                 .hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers(HttpMethod.GET, "/reservations/delete/**")
+                .antMatchers(HttpMethod.POST, "/reservations/delete/**")
                 .hasAnyAuthority("ROLE_ADMIN")
                 .and().csrf().disable()
                 .headers().frameOptions().disable()
