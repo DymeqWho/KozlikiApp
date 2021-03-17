@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,12 +21,7 @@ public class ReservationService {
 
     public void createReservation(ReservationRequest reservationRequest) {
         ReservationEntity reservationEntity = new ReservationEntity();
-        reservationEntity.setFromWhen(reservationRequest.getFromWhen());
-        reservationEntity.setTillWhen(reservationRequest.getTillWhen());
-        reservationEntity.setWho(reservationRequest.getWho());
-        reservationEntity.setWhat(reservationRequest.getWhat());
-        reservationEntity.setNotes(reservationRequest.getNotes());
-        reservationRepository.save(reservationEntity);
+        settingReservationEntity(reservationRequest, reservationEntity);
     }
 
     public ReservationResponse readReservation(Long id) {
@@ -35,6 +31,7 @@ public class ReservationService {
         reservationResponse.setWhat(reservationRepository.findById(id).orElseThrow().getWhat());
         reservationResponse.setWho(reservationRepository.findById(id).orElseThrow().getWho());
         reservationResponse.setNotes(reservationRepository.findById(id).orElseThrow().getNotes());
+        reservationResponse.setDateTimeOfReservation(reservationRepository.findById(id).orElseThrow().getDateTimeOfReservation());
         return reservationResponse;
     }
 
@@ -47,6 +44,7 @@ public class ReservationService {
                         .what(reservationEntity.getWhat())
                         .who(reservationEntity.getWho())
                         .notes(reservationEntity.getNotes())
+                        .dateTimeOfReservation(reservationEntity.getDateTimeOfReservation())
                         .build())
                 .collect(Collectors.toList())).build();
     }
@@ -58,11 +56,16 @@ public class ReservationService {
     public void updateNote(Long id, ReservationRequest reservationRequestToUpdate){
         ReservationEntity reservationEntity = reservationRepository.findById(id).orElseThrow(() -> new RuntimeException("Nie ma takiego id"));
 
+        settingReservationEntity(reservationRequestToUpdate, reservationEntity);
+    }
+
+    private void settingReservationEntity(ReservationRequest reservationRequestToUpdate, ReservationEntity reservationEntity) {
         reservationEntity.setFromWhen(reservationRequestToUpdate.getFromWhen());
         reservationEntity.setTillWhen(reservationRequestToUpdate.getTillWhen());
         reservationEntity.setWho(reservationRequestToUpdate.getWho());
         reservationEntity.setWhat(reservationRequestToUpdate.getWhat());
         reservationEntity.setNotes(reservationRequestToUpdate.getNotes());
+        reservationEntity.setDateTimeOfReservation(LocalDateTime.now());
 
         reservationRepository.save(reservationEntity);
     }

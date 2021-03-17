@@ -9,12 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,9 +44,28 @@ public class ReservationsFront implements WebMvcConfigurer {
     }
 
     @PostMapping(path = "/reservations")
-        public String addReservation(@ModelAttribute("newReservation") @Valid ReservationFrontRequest reservationFrontRequest, BindingResult bindingResult) {
+    public String addReservation(@ModelAttribute("newReservation") @Valid ReservationFrontRequest reservationFrontRequest, BindingResult bindingResult, Model model) {
+
         if (bindingResult.hasErrors()) {
+            model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż dzisiejsza!");
+            model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza!");
             return "reservations";
+        } else if (!bindingResult.hasFieldErrors()) {
+            DateExceptions dateExceptions = new DateExceptions();
+            LocalDate fromWhen = reservationFrontRequest.getFromWhen();
+            boolean isValidFromWhen = dateExceptions.isDateValid(fromWhen);
+            LocalDate tillWhen = reservationFrontRequest.getTillWhen();
+            boolean isValidTillWhen = dateExceptions.isDateValid(fromWhen, tillWhen);
+            if (!isValidFromWhen || !isValidTillWhen) {
+                if (fromWhen.isAfter(tillWhen)) {
+                    model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż \"do kiedy\"!");
+                    model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\"!");
+                    return "reservations";
+                }
+                model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż dzisiejsza!");
+                model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\"!");
+                return "reservations";
+            }
         }
         reservationService.createReservation(ReservationRequest.builder()
                 .fromWhen(reservationFrontRequest.getFromWhen())
@@ -53,6 +73,7 @@ public class ReservationsFront implements WebMvcConfigurer {
                 .who(reservationFrontRequest.getWho())
                 .what(reservationFrontRequest.getWhat())
                 .notes(reservationFrontRequest.getNotes())
+                .dateTimeOfReservation(reservationFrontRequest.getDateTimeOfReservation())
                 .build());
         return "redirect:/reservations";
     }
@@ -74,7 +95,7 @@ public class ReservationsFront implements WebMvcConfigurer {
             return "reservations";
         }
 
-        ReservationRequest reservationRequest = new ReservationRequest(reservationFrontRequest.getFromWhen(), reservationFrontRequest.getTillWhen(), reservationFrontRequest.getWho(), reservationFrontRequest.getWhat(), reservationFrontRequest.getNotes());
+        ReservationRequest reservationRequest = new ReservationRequest(reservationFrontRequest.getFromWhen(), reservationFrontRequest.getTillWhen(), reservationFrontRequest.getWho(), reservationFrontRequest.getWhat(), reservationFrontRequest.getNotes(), LocalDateTime.now());
         reservationService.updateNote(id, reservationRequest);
         return "redirect:/reservations";
     }

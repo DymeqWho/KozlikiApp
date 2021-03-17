@@ -17,6 +17,7 @@
             Od kiedy?
             <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
             <span th:if="${#fields.hasErrors('fromWhen')}" th:errors="*{fromWhen}">Błędna data początku rezerwacji!</span>
+            <span th:if="${fromWhenError}" th:text="${fromWhenError}">fromWhenError</span>
 
         </label>
         <br/>
@@ -24,24 +25,25 @@
         <label class=" col-form-label"> Do kiedy?
             <input class="input-group-text" type="date" th:field="*{{tillWhen}}">
             <span th:if="${#fields.hasErrors('tillWhen')}" th:errors="*{tillWhen}">Błędna data zakończenia rezerwacji!</span>
+            <span th:if="${tillWhenError}" th:text="${tillWhenError}">tillWhenError</span>
         </label>
 
         <br/>
 
         <label class="col-form-label" for="who"> Kto?</label>
-        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?">
+        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?" placeholder="Jak się nazywasz?">
         <span th:if="${#fields.hasErrors('who')}" th:errors="*{who}">Przedstaw się!</span>
 
         <br/>
 
         <label class="col-form-label" for="what"> Co? </label>
-        <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?">
+        <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?" placeholder="Co chcesz zarezerwować?">
         <span th:if="${#fields.hasErrors('what')}" th:errors="*{what}">Żeś się rozpisał... krócej ;-)</span>
 
         <br/>
 
         <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
-        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki">
+        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki" placeholder="opcjonalne notatki...">
         <span th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}">Żeś się rozpisał... krócej ;-)</span>
 
         <br/>
@@ -62,6 +64,7 @@
     <br/>
     Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
     <br/>
+    Rezerwacji dokonano: <span id="when_booked" th:text="${reservation.getDateTimeOfReservation()}"></span>
 
     <div sec:authorize="hasRole('ADMIN')">
         <a th:href="@{'/reservations/update/' + ${reservation.id}}"><button type="submit" value="edit">Edytuj</button></a>
