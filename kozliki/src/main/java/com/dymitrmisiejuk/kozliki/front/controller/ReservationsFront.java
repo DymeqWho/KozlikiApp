@@ -56,14 +56,21 @@ public class ReservationsFront implements WebMvcConfigurer {
             boolean isValidFromWhen = dateExceptions.isDateValid(fromWhen);
             LocalDate tillWhen = reservationFrontRequest.getTillWhen();
             boolean isValidTillWhen = dateExceptions.isDateValid(fromWhen, tillWhen);
+            boolean isValidTimeInDays = dateExceptions.isReservationValidTime(fromWhen, tillWhen);
+
             if (!isValidFromWhen || !isValidTillWhen) {
                 if (fromWhen.isAfter(tillWhen)) {
                     model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż \"do kiedy\"!");
-                    model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\"!");
+                    model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\"!" +
+                            " Cały termin rezerwacji nie może być dłuższy niż 4 dni!");
                     return "reservations";
                 }
                 model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż dzisiejsza!");
-                model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\"!");
+                model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\".");
+                return "reservations";
+            }
+            if (!isValidTimeInDays) {
+                model.addAttribute("tillWhenError", "Cały termin rezerwacji nie może być dłuższy niż 4 dni!");
                 return "reservations";
             }
         }
