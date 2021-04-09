@@ -18,6 +18,7 @@
             <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
             <span th:if="${#fields.hasErrors('fromWhen')}" th:errors="*{fromWhen}">Błędna data początku rezerwacji!</span>
             <span th:if="${fromWhenError}" th:text="${fromWhenError}">fromWhenError</span>
+            <span th:if="${overlappingError}" th:text="${overlappingError}">overlappingError</span>
 
         </label>
         <br/>
