@@ -6,11 +6,21 @@ html {
 body {
     padding: 0;
     text-align: center;
-    background-color: lightyellow;
+    background-color: #d4d4a7;
     font-family: "Arial";
-    color: midnightblue;
+    color: #1a1a72;
     max-width: 1440px;
     margin: auto;
+}
+
+#menu_span {
+    color: #dddddd;
+
+}
+
+#menu {
+    padding: 14px;
+    background-color: #1a1a72;
 }
 
 h1 {
@@ -19,40 +29,16 @@ h1 {
 
 h2 {
     font-size: 200%;
-}
-
-#menu_span {
-    display: none;
-}
-
-nav {
-    background-color: chocolate;
-}
-
-nav ul {
-    padding: 5px;
-}
-
-nav ul li {
-    display: inline-block;
-    width: auto;
-    border-style: solid;
-    list-style: outside none none;
-    padding: 5px;
-    background-color: burlywood;
-}
-
-h2 {
     text-align: center;
 }
 
 header {
-    max-width: 1140px;
+    max-width: 90%;
     margin: auto;
 }
 
 article {
-    max-width: 1140px;
+    max-width: 90%;
     margin: auto;
 }
 
@@ -81,4 +67,39 @@ article li {
         font-size: 130%;
     }
 
+
+    .topnav {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .topnav #myLinks {
+        display: none;
+    }
+
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+
+    .topnav a.icon {
+        background: #0e0e68;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
 }
