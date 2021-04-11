@@ -13,16 +13,6 @@ body {
     margin: auto;
 }
 
-#menu_span {
-    color: #dddddd;
-
-}
-
-#menu {
-    padding: 14px;
-    background-color: #1a1a72;
-}
-
 h1 {
     font-size: 250%;
 }
@@ -32,9 +22,56 @@ h2 {
     text-align: center;
 }
 
+#menu_span{
+   display: none;
+}
 header {
     max-width: 90%;
     margin: auto;
+}
+
+.topnav {
+    /*overflow: auto;*/
+    position: center;
+    position: -webkit-sticky;
+    top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #1a1a72;
+
+}
+
+/*#myLinks{*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*}*/
+
+/*.topnav #myLinks {*/
+/*    display: block;*/
+/*}*/
+
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.topnav a.icon {
+    display: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
 article {
@@ -67,10 +104,22 @@ article li {
         font-size: 130%;
     }
 
+    #menu{
+        padding-bottom: 26px;
+        position: relative;
+    /*    text-align: center;*/
+    }
 
     .topnav {
         overflow: hidden;
         position: relative;
+        /*padding: 14px;*/
+    }
+
+    #menu_span{
+        display: block;
+        /*color: #dddddd;*/
+        /*margin: fill;*/
     }
 
     .topnav #myLinks {
@@ -78,6 +127,7 @@ article li {
     }
 
     .topnav a {
+        /*text-align: center;*/
         color: white;
         padding: 14px 16px;
         text-decoration: none;
