@@ -3,21 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dymitr Misiejuk"/>
+    <link href="css/main.css" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<div id="menu" class="topnav">
+    <span id="menu_span">Menu</span>
+    <div id="myLinks">
+        <a href="../#skansen_text"><div class="menu_item">Skansen w Koźlikach</div></a>
+        <a href="../#imprezy_text"><div class="menu_item">Imprezy</div></a>
+        <a href="../#aktualnosci_text"><div class="menu_item">Aktualności</div></a>
+        <a href="../#aktualnosci_text"><div class="menu_item">Okolica, sport i rekreacja</div></a>
+        <a href="../#lokalizacja_text"><div class="menu_item">Lokalizacja</div></a>
+        <a href="../#statut_text"><div class="menu_item">Działalność</div></a>
+        <a href="../#sprawozdania_text"><div class="menu_item">Sprawozdania OPP</div></a>
+        <a href="../#nrRachunku_text"><div class="menu_item">Nr rachunku i KRS</div></a>
+        <a href="../#oNas_content"><div class="menu_item">O nas w sieci!</div></a>
+        <a href="/login.html"><div class="menu_item">Rezerwacje</div></a>
+    </div>
+    <div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
 <p th:if="${loginError}" class="error">Niepoprawny login lub hasło</p>
 <form th:action="@{/login-process}" method="post">
-
+    <div class="window">
     <label for="inputLogin">Login:</label>
     <input id="inputLogin" type="text" placeholder="Podaj login" th:required="required" name="login" />
-
+    </div>
+    <div class="window">
     <label for="inputPassword">Hasło:</label>
     <input id="inputPassword" type="password" placeholder="Podaj hasło" th:required="required" name="password"/>
-
+    </div>
+    <div class="window">
     <button type="submit">Zaloguj</button>
-
+    </div>
+    <div class="window">
     <a href="/index.html"><button type="button">Powrót do strony głównej</button></a>
-
+    </div>
 </form>
 </body>
+
+<script src="main.js"></script>
 </html>
