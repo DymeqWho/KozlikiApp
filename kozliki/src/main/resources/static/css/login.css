@@ -5,3 +5,20 @@ form{
 .window{
     padding: 5px;
 }
+
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.topnav a.icon {
+    display: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}

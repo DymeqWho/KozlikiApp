@@ -19,25 +19,53 @@
 <div id="menu" class="topnav">
     <span id="menu_span">Menu</span>
     <div id="myLinks">
-        <a href="#skansen_text"><div class="menu_item">Skansen w Koźlikach</div></a>
-        <a href="#imprezy_text"><div class="menu_item">Imprezy</div></a>
-        <a href="#aktualnosci_text"><div class="menu_item">Aktualności</div></a>
-        <a href="#aktualnosci_text"><div class="menu_item">Okolica, sport i rekreacja</div></a>
-        <a href="#lokalizacja_text"><div class="menu_item">Lokalizacja</div></a>
-        <a href="#statut_text"><div class="menu_item">Działalność</div></a>
-        <a href="#sprawozdania_text"><div class="menu_item">Sprawozdania OPP</div></a>
-        <a href="#nrRachunku_text"><div class="menu_item">Nr rachunku i KRS</div></a>
-        <a href="#oNas_content"><div class="menu_item">O nas w sieci!</div></a>
-        <a href="/login.html"><div class="menu_item">Rezerwacje</div></a>
+        <!--        <a href="#skansen_text">-->
+
+        <button class="menu_item" id="skansen_menu" onclick="change_skansen()">Skansen w Koźlikach</button>
+
+        <!--        </a>-->
+        <!--        <a href="#imprezy_text">-->
+
+        <button class="menu_item" id="imprezy_menu" onclick="change_imprezy()">Imprezy</button>
+
+        <!--        </a>-->
+        <!--        <a href="#aktualnosci_text">-->
+        <button class="menu_item" id="aktualnosci_menu" onclick="change_aktualnosci()">Aktualności</button>
+        <!--        </a>-->
+        <!--        <a href="#okolica_sport_txt">-->
+        <button class="menu_item" onclick="change_okolica_sport()">Okolica, sport i rekreacja</button>
+        <!--        </a>-->
+        <!--        <a href="#lokalizacja_text">-->
+        <button class="menu_item" id="lokalizacja_menu" onclick="change_lokalizacja()">Lokalizacja</button>
+        <!--        </a>-->
+        <!--        <a href="#statut_text">-->
+        <button class="menu_item" id="statut_menu" onclick="change_statut()">Działalność</button>
+        <!--        </a>-->
+        <!--        <a href="#sprawozdania_text">-->
+        <button class="menu_item" id="sprawozdania_menu" onclick="change_sprawozdania()">Sprawozdania OPP</button>
+        <!--        </a>-->
+        <!--        <a href="#nrRachunku_text">-->
+        <button class="menu_item" id="nrRachunku_menu" onclick="change_nrRachunku()">Nr rachunku i KRS</button>
+        <!--        </a>-->
+        <!--        <a href="#oNas_content">-->
+        <div class="menu_item" id="oNas_menu" onclick="change_oNas()">O nas w sieci!</div>
+        <!--        </a>-->
+        <button>
+            <a href="/login.html">
+            <div class="menu_item">
+                Rezerwacje
+            </div>
+            </a>
+        </button>
     </div>
-    <div>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-    </a>
+    <div id="hamburger_icon">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
     </div>
 </div>
 
-<article>
+<article id="skansen_article">
     <div id="skansen_text">
         <h2>Skansen w Koźlikach</h2>
 
@@ -258,87 +286,89 @@
     </div>
 </article>
 <article>
-    <div id="walory_text">
-        <h2>Okolica, sport i rekreacja</h2>
+    <div id="okolica_sport_txt">
+        <div id="walory_text">
+            <h2>Okolica, sport i rekreacja</h2>
 
-        <p><b>Turystyka i wypoczynek:</b></p>
-        <p>Na terenie Skansenu w Koźlikach, w okresie letnim odbywają się imprezy o charakterze turystycznym:
-            spływy
-            kajakowe, wędrówki piesze i rowerowe, rejsy pychówką z żaglem rozprzowym. Zimą Skansen służy jako
-            baza do
-            wędrówek na nartach biegowych i kąpieli w przerębli na rzece Narew. Towarzystwo posiada
-            przechowalnię sprzętu
-            turystycznego i rekreacyjnego wyposażoną w m.in. kijki do trekkingu i kajaki z pełnym wyposażeniem,
-            przystań
-            kajakową, stanicę jeździecką.</p>
-    </div>
-    <div id="waloryPrzyr_text">
-        <p><b>Walory przyrodnicze:</b></p>
-        <ul>
-            <li>Obszar <a href="http://ine.eko.org.pl/index_areas.php?rek=69"
-                          target="http://ine.eko.org.pl/index_areas.php?rek=69">Natura 2000 Dolina Górnej
-                Narwi</a> z <a
-                    href="http://www.ptop.org.pl/o-nas/ostoje-ptop/woj-podlaskie/dolina-gornej-narwi.html"
-                    target="http://www.ptop.org.pl/o-nas/ostoje-ptop/woj-podlaskie/dolina-gornej-narwi.html">Ostoją
-                ptaków PTOP
-                &#34Dolina Górnej Narwi&#34</a>
-                Lokalizacja: dolina Narwi na odcinku od wsi Narew do wsi Zawyki.
-            </li>
-            <li>Hodowla tarpanów na Wyspie Stupnickiej w bezpośrednim sąsiedztwie Skansenu w Koźlikach.
-            </li>
-            <li>Bory sosnowe na piaszczystych wydmach Doliny Narwi.</li>
-        </ul>
-    </div>
-    <div id="waloryKult_text">
-        <p><b>Walory kulturowe: </b></p>
-        <ul>
-            <li>zabytkowe układy przestrzenne wsi sąsiadujących z Skansenem w Koźlikach oraz liczne zabytkowe
-                obiekty
-                drewnianego budownictwa wiejskiego,
-            </li>
-            <li><a href="http://nadbuhom.pl/art_1604.html" target="http://nadbuhom.pl/art_1604.html">wczesnośredniowieczne
-                kurhany</a> w sąsiedztwie Skansenem w Koźlikach, w okolicy wsi Koźliki,
-            </li>
-            <li><a href="http://www.portals.narew.gmina.pl/solectwa-i-soltysi/72-kozliki"
-                   target="http://www.portals.narew.gmina.pl/solectwa-i-soltysi/72-kozliki">cerkiew p.w. Św.
-                Mikołaja</a>
-                z
-                1792 roku w sąsiedztwie Skansenu w Koźlikach.
-            </li>
-        </ul>
-    </div>
-    <div id="szlaki_text">
-        <p><b>Szlaki turystyczne: </b></p>
-        <ul>
-            <li><a href="http://www.portals.narew.gmina.pl/atrakcje-turystyczne/122-szlak-swiatyn-prawoslawnych"
-                   target="http://www.portals.narew.gmina.pl/atrakcje-turystyczne/122-szlak-swiatyn-prawoslawnych">Szlak
-                prawosławnych świątyń</a> - szlak promuje kulturę prawosławia na Północnym Podlasiu - zabytkowe,
-                w znacznej
-                części drewniane cerkwie i inne obiekty kultu. W bliskiej okolicy cerkwie w Ploskach, Puchłach i
-                Koźlikach.
-            </li>
-            <li>Rowerowy <a href="https://www.podlaskiszlakbociani.pl/"
-                            target="https://www.podlaskiszlakbociani.pl/">Podlaski
-                Szlak Bociani</a> - Szlak przebiega przez najcenniejsze pod względem przyrodniczym tereny nie
-                tylko w
-                Polsce,
-                ale i w Europie.
-            </li>
-            <li><a href="https://www.polska.travel/pl/szlaki/szlak-kajakowy-rozlewiskami-narwi"
-                   target="https://www.polska.travel/pl/szlaki/szlak-kajakowy-rozlewiskami-narwi">Szlak
-                kajakowy: rzeka
-                Narew</a> - górny bieg Narwi (do Wizny) to rozległa dolina o płaskich brzegach, z dużą ilością
-                zakoli i
-                wieloma
-                korytami o wyraźnym nurcie.
-            </li>
-            <li><a href="http://www.gornanarew.pl/index.php?option=com_content&view=article&id=45&Itemid=8"
-                   target="http://www.gornanarew.pl/index.php?option=com_content&view=article&id=45&Itemid=8">Szlak
-                konny
-                Doliny Górnej Narwi</a> - prowadzi południowym skrajem Doliny Górnej Narwi, na długości około 35
-                km.
-            </li>
-        </ul>
+            <p><b>Turystyka i wypoczynek:</b></p>
+            <p>Na terenie Skansenu w Koźlikach, w okresie letnim odbywają się imprezy o charakterze turystycznym:
+                spływy
+                kajakowe, wędrówki piesze i rowerowe, rejsy pychówką z żaglem rozprzowym. Zimą Skansen służy jako
+                baza do
+                wędrówek na nartach biegowych i kąpieli w przerębli na rzece Narew. Towarzystwo posiada
+                przechowalnię sprzętu
+                turystycznego i rekreacyjnego wyposażoną w m.in. kijki do trekkingu i kajaki z pełnym wyposażeniem,
+                przystań
+                kajakową, stanicę jeździecką.</p>
+        </div>
+        <div id="waloryPrzyr_text">
+            <p><b>Walory przyrodnicze:</b></p>
+            <ul>
+                <li>Obszar <a href="http://ine.eko.org.pl/index_areas.php?rek=69"
+                              target="http://ine.eko.org.pl/index_areas.php?rek=69">Natura 2000 Dolina Górnej
+                    Narwi</a> z <a
+                        href="http://www.ptop.org.pl/o-nas/ostoje-ptop/woj-podlaskie/dolina-gornej-narwi.html"
+                        target="http://www.ptop.org.pl/o-nas/ostoje-ptop/woj-podlaskie/dolina-gornej-narwi.html">Ostoją
+                    ptaków PTOP
+                    &#34Dolina Górnej Narwi&#34</a>
+                    Lokalizacja: dolina Narwi na odcinku od wsi Narew do wsi Zawyki.
+                </li>
+                <li>Hodowla tarpanów na Wyspie Stupnickiej w bezpośrednim sąsiedztwie Skansenu w Koźlikach.
+                </li>
+                <li>Bory sosnowe na piaszczystych wydmach Doliny Narwi.</li>
+            </ul>
+        </div>
+        <div id="waloryKult_text">
+            <p><b>Walory kulturowe: </b></p>
+            <ul>
+                <li>zabytkowe układy przestrzenne wsi sąsiadujących z Skansenem w Koźlikach oraz liczne zabytkowe
+                    obiekty
+                    drewnianego budownictwa wiejskiego,
+                </li>
+                <li><a href="http://nadbuhom.pl/art_1604.html" target="http://nadbuhom.pl/art_1604.html">wczesnośredniowieczne
+                    kurhany</a> w sąsiedztwie Skansenem w Koźlikach, w okolicy wsi Koźliki,
+                </li>
+                <li><a href="http://www.portals.narew.gmina.pl/solectwa-i-soltysi/72-kozliki"
+                       target="http://www.portals.narew.gmina.pl/solectwa-i-soltysi/72-kozliki">cerkiew p.w. Św.
+                    Mikołaja</a>
+                    z
+                    1792 roku w sąsiedztwie Skansenu w Koźlikach.
+                </li>
+            </ul>
+        </div>
+        <div id="szlaki_text">
+            <p><b>Szlaki turystyczne: </b></p>
+            <ul>
+                <li><a href="http://www.portals.narew.gmina.pl/atrakcje-turystyczne/122-szlak-swiatyn-prawoslawnych"
+                       target="http://www.portals.narew.gmina.pl/atrakcje-turystyczne/122-szlak-swiatyn-prawoslawnych">Szlak
+                    prawosławnych świątyń</a> - szlak promuje kulturę prawosławia na Północnym Podlasiu - zabytkowe,
+                    w znacznej
+                    części drewniane cerkwie i inne obiekty kultu. W bliskiej okolicy cerkwie w Ploskach, Puchłach i
+                    Koźlikach.
+                </li>
+                <li>Rowerowy <a href="https://www.podlaskiszlakbociani.pl/"
+                                target="https://www.podlaskiszlakbociani.pl/">Podlaski
+                    Szlak Bociani</a> - Szlak przebiega przez najcenniejsze pod względem przyrodniczym tereny nie
+                    tylko w
+                    Polsce,
+                    ale i w Europie.
+                </li>
+                <li><a href="https://www.polska.travel/pl/szlaki/szlak-kajakowy-rozlewiskami-narwi"
+                       target="https://www.polska.travel/pl/szlaki/szlak-kajakowy-rozlewiskami-narwi">Szlak
+                    kajakowy: rzeka
+                    Narew</a> - górny bieg Narwi (do Wizny) to rozległa dolina o płaskich brzegach, z dużą ilością
+                    zakoli i
+                    wieloma
+                    korytami o wyraźnym nurcie.
+                </li>
+                <li><a href="http://www.gornanarew.pl/index.php?option=com_content&view=article&id=45&Itemid=8"
+                       target="http://www.gornanarew.pl/index.php?option=com_content&view=article&id=45&Itemid=8">Szlak
+                    konny
+                    Doliny Górnej Narwi</a> - prowadzi południowym skrajem Doliny Górnej Narwi, na długości około 35
+                    km.
+                </li>
+            </ul>
+        </div>
     </div>
 </article>
 
@@ -810,7 +840,6 @@
 <footer>Towarzystwo Przyjaciół Skansenu w Koźlikach 2021 &copy; Wszelkie prawa zastrzeżone</footer>
 
 <script src="main.js"></script>
-
 
 </body>
 </html>

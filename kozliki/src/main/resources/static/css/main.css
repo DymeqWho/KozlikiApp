@@ -13,6 +13,14 @@ body {
     margin: auto;
 }
 
+article, section{
+    display: none;
+}
+
+#skansen_article{
+    display: block;
+}
+
 h1 {
     font-size: 250%;
 }
@@ -42,21 +50,25 @@ header {
 
 }
 
-.topnav a {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: inline-block;
-}
+/*.topnav a {*/
+/*    color: white;*/
+/*    padding: 14px 16px;*/
+/*    text-decoration: none;*/
+/*    font-size: 17px;*/
+/*    display: inline-block;*/
+/*}*/
 
-.topnav a.icon {
+/*.topnav a.icon {*/
+/*    display: none;*/
+/*}*/
+
+/*.topnav a:hover {*/
+/*    background-color: #ddd;*/
+/*    color: black;*/
+/*}*/
+
+#hamburger_icon{
     display: none;
-}
-
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
 }
 
 .active {
@@ -92,6 +104,10 @@ article li {
 
     h2 {
         font-size: 130%;
+    }
+
+    #hamburger_icon{
+        display: block;
     }
 
     #menu{
