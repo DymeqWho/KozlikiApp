@@ -6,7 +6,7 @@ html {
 body {
     padding: 0;
     text-align: center;
-    background-color: #d4d4a7;
+    background-color: #d4d4b4;
     font-family: "Arial";
     color: #1a1a72;
     max-width: 1440px;
@@ -30,6 +30,16 @@ h2 {
     text-align: center;
 }
 
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 #menu_span{
    display: none;
 }
@@ -47,25 +57,18 @@ header {
     justify-content: space-around;
     align-items: flex-start;
     background-color: #1a1a72;
-
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-/*.topnav a {*/
-/*    color: white;*/
-/*    padding: 14px 16px;*/
-/*    text-decoration: none;*/
-/*    font-size: 17px;*/
-/*    display: inline-block;*/
-/*}*/
-
-/*.topnav a.icon {*/
-/*    display: none;*/
-/*}*/
-
-/*.topnav a:hover {*/
-/*    background-color: #ddd;*/
-/*    color: black;*/
-/*}*/
+button{
+    border-radius: 12px;
+    padding: 5px;
+}
+button:hover{
+    background-color: azure;
+    color: chocolate;
+}
 
 #hamburger_icon{
     display: none;
@@ -93,6 +96,11 @@ article li {
     text-align: center;
 }
 
+footer{
+    padding-top: 5%;
+    padding-bottom: 5px;
+}
+
 @media screen and (max-width: 768px) {
     body {
         max-width: 90%;
@@ -108,6 +116,23 @@ article li {
 
     #hamburger_icon{
         display: block;
+        background: #0e0e68;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    #hamburger_icon a{
+        color: white;
+    }
+
+    #hamburger_icon:hover{
+        background-color: #d47b7b;
+        color: black;
     }
 
     #menu{
@@ -130,30 +155,29 @@ article li {
     .topnav #myLinks {
         display: none;
     }
+    #myLinks{
+        position: fixed;
+    }
+    button{
+        display: table;
+        /*margin-left: auto;*/
+        margin-left: -80px;
+        position: relative;
+        border-radius: 12px;
+        padding: 10px;
+        margin-right: 20px;
+        text-align: center;
+        width: 300%;
+        opacity: 0.9;
 
-    .topnav a {
-        color: white;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        display: block;
+        /*background-color: #4CAF50; !* Green background *!*/
+        /*border: 1px solid green; !* Green border *!*/
+        /*color: white; !* White text *!*/
+        /*padding: 10px 24px; !* Some padding *!*/
+        /*cursor: pointer; !* Pointer/hand icon *!*/
+        /*width: 50%; !* Set a width if needed *!*/
+        /*display: block;*/
     }
 
-    .topnav a.icon {
-        background: #0e0e68;
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
 
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    .active {
-        background-color: #4CAF50;
-        color: white;
-    }
 }
