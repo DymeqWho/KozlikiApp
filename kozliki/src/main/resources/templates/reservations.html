@@ -5,57 +5,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Rezerwacje</title>
-    <!--    <link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dymitr Misiejuk"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reservations.css}">
 
     <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<h1>Rezerwacje:</h1>
 <div id="reservation_form">
     <form th:action="@{/reservations}" method="post" class="form-control-plaintext" th:object="${newReservation}">
-        <label class="col-form-label">
-            Od kiedy?
-            <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
-            <span th:if="${#fields.hasErrors('fromWhen')}" th:errors="*{fromWhen}">Błędna data początku rezerwacji!</span>
-            <span th:if="${fromWhenError}" th:text="${fromWhenError}">fromWhenError</span>
-            <span th:if="${overlappingError}" th:text="${overlappingError}">overlappingError</span>
+        <label class="col-form-label" for="fromWhen">
+            Od kiedy?</label>
+        <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
+        <div class="error_class" th:if="${#fields.hasErrors('fromWhen')}" th:errors="*{fromWhen}">Błędna data
+            początku rezerwacji!
+        </div>
+        <div class="error_class" th:if="${fromWhenError}" th:text="${fromWhenError}">fromWhenError</div>
+        <div class="error_class" th:if="${overlappingError}" th:text="${overlappingError}">overlappingError</div>
 
-        </label>
-        <br/>
-
-        <label class=" col-form-label"> Do kiedy?
-            <input class="input-group-text" type="date" th:field="*{{tillWhen}}">
-            <span th:if="${#fields.hasErrors('tillWhen')}" th:errors="*{tillWhen}">Błędna data zakończenia rezerwacji!</span>
-            <span th:if="${tillWhenError}" th:text="${tillWhenError}">tillWhenError</span>
-        </label>
-
-        <br/>
+        <label class=" col-form-label" for="tillWhen"> Do kiedy?</label>
+        <input class="input-group-text" type="date" id="tillWhen" th:field="*{{tillWhen}}">
+        <div class="error_class" th:if="${#fields.hasErrors('tillWhen')}" th:errors="*{tillWhen}">Błędna data
+            zakończenia rezerwacji!
+        </div>
+        <div class="error_class" th:if="${tillWhenError}" th:text="${tillWhenError}">tillWhenError</div>
 
         <label class="col-form-label" for="who"> Kto?</label>
-        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?" placeholder="Jak się nazywasz?">
-        <span th:if="${#fields.hasErrors('who')}" th:errors="*{who}">Przedstaw się!</span>
+        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?"
+               placeholder="Jak się nazywasz?">
+        <div class="error_class" th:if="${#fields.hasErrors('who')}" th:errors="*{who}">Przedstaw się!</div>
 
-        <br/>
 
         <label class="col-form-label" for="what"> Co? </label>
-        <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?" placeholder="Co chcesz zarezerwować?">
-        <span th:if="${#fields.hasErrors('what')}" th:errors="*{what}">Żeś się rozpisał... krócej ;-)</span>
+        <input class="input-group-text" type="text" id="what" th:field="*{what}"
+               value="które obiekty chcesz zarezerwować?" placeholder="Co chcesz zarezerwować?">
+        <div class="error_class" th:if="${#fields.hasErrors('what')}" th:errors="*{what}">Żeś się rozpisał... krócej
+            ;-)
+        </div>
 
-        <br/>
 
         <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
-        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki" placeholder="opcjonalne notatki...">
-        <span th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}">Żeś się rozpisał... krócej ;-)</span>
+        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki"
+               placeholder="opcjonalne notatki...">
+        <div class="error_class" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}">Żeś się rozpisał... krócej
+            ;-)
+        </div>
 
-        <br/>
 
-        <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
+        <div id="clear_float"></div>
+        <div id="submit_button">
+            <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
+        </div>
+
     </form>
 </div>
 
 <br/>
 
-<div th:each="reservation : ${reservations}" id="reservation_result" >
+<div th:each="reservation : ${reservations}" id="reservation_result">
 
     Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span> do: <span
         th:text="${reservation.tillWhen}"></span>
@@ -68,9 +78,11 @@
     Rezerwacji dokonano: <span id="when_booked" th:text="${reservation.getDateTimeOfReservation()}"></span>
 
     <div sec:authorize="hasRole('ADMIN')">
-        <a th:href="@{'/reservations/update/' + ${reservation.id}}"><button type="submit" value="edit">Edytuj</button></a>
+        <a th:href="@{'/reservations/update/' + ${reservation.id}}">
+            <button type="submit" value="edit">Edytuj</button>
+        </a>
         <form th:action="@{'/reservations/delete/' + ${reservation.id}}" th:method="post">
-            <button type="submit" value="delete" >
+            <button type="submit" value="delete">
                 Usuń
             </button>
         </form>
@@ -78,8 +90,10 @@
 
 </div>
 
-<br />
-<a th:href="@{'/logout'}"><button type="submit" value="logout">Wyloguj</button></a>
+<br/>
+<a th:href="@{'/logout'}">
+    <button type="submit" value="logout">Wyloguj</button>
+</a>
 
 </body>
 </html>

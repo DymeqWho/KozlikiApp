@@ -13,11 +13,11 @@ body {
     margin: auto;
 }
 
-article, section{
+article, section {
     display: none;
 }
 
-#skansen_article{
+#skansen_article {
     display: block;
 }
 
@@ -40,9 +40,10 @@ a:visited {
     color: black;
 }
 
-#menu_span{
-   display: none;
+#menu_span {
+    display: none;
 }
+
 header {
     max-width: 90%;
     margin: auto;
@@ -61,16 +62,22 @@ header {
     padding-bottom: 5px;
 }
 
-button{
+button {
     border-radius: 12px;
     padding: 5px;
 }
-button:hover{
+
+button:hover {
     background-color: azure;
+    color: chocolate;
+    cursor: pointer;
+}
+
+#rezerwacje_a:hover{
     color: chocolate;
 }
 
-#hamburger_icon{
+#hamburger_icon {
     display: none;
 }
 
@@ -96,7 +103,7 @@ article li {
     text-align: center;
 }
 
-footer{
+footer {
     padding-top: 5%;
     padding-bottom: 5px;
 }
@@ -114,7 +121,7 @@ footer{
         font-size: 130%;
     }
 
-    #hamburger_icon{
+    #hamburger_icon {
         display: block;
         background: #0e0e68;
         position: absolute;
@@ -126,16 +133,17 @@ footer{
         text-decoration: none;
         font-size: 17px;
     }
-    #hamburger_icon a{
+
+    #hamburger_icon a {
         color: white;
     }
 
-    #hamburger_icon:hover{
+    #hamburger_icon:hover {
         background-color: #d47b7b;
         color: black;
     }
 
-    #menu{
+    #menu {
         padding-bottom: 26px;
         position: sticky;
     }
@@ -148,19 +156,20 @@ footer{
         overflow: hidden;
     }
 
-    #menu_span{
+    #menu_span {
         display: block;
     }
 
     .topnav #myLinks {
         display: none;
     }
-    #myLinks{
+
+    #myLinks {
         position: fixed;
     }
-    button{
+
+    button {
         display: table;
-        /*margin-left: auto;*/
         margin-left: -80px;
         position: relative;
         border-radius: 12px;
@@ -169,14 +178,6 @@ footer{
         text-align: center;
         width: 300%;
         opacity: 0.9;
-
-        /*background-color: #4CAF50; !* Green background *!*/
-        /*border: 1px solid green; !* Green border *!*/
-        /*color: white; !* White text *!*/
-        /*padding: 10px 24px; !* Some padding *!*/
-        /*cursor: pointer; !* Pointer/hand icon *!*/
-        /*width: 50%; !* Set a width if needed *!*/
-        /*display: block;*/
     }
 
 
