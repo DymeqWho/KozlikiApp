@@ -3,48 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Reservation</title>
-    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <!--    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dymitr Misiejuk"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reservations.css}">
 </head>
 <body>
 
-<form action="#"
-      th:action="@{/reservations/update/{id}(id=${reservationEntity.id})}"
-      th:object="${reservationEntity}"
-      method="post">
-    <label class="col-form-label">
-        Od kiedy?
-        <input class="input-group-text" type="date" th:field="*{{fromWhen}}">
+<div id="reservation_form">
+    <form action="#"
+          th:action="@{/reservations/update/{id}(id=${reservationEntity.id})}"
+          th:object="${reservationEntity}"
+          method="post">
+        <div class="form-group">
+            <label class="col-form-label" for="fromWhen">
+                Od kiedy?</label>
+            <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
+        </div>
+        <div class="form-group">
+            <label class=" col-form-label" for="tillWhen"> Do kiedy?</label>
+            <input class="input-group-text" type="date" id="tillWhen" th:field="*{{tillWhen}}">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="who"> Kto?</label>
+            <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="what"> Co? </label>
+            <input class="input-group-text" type="text" id="what" th:field="*{what}"
+                   value="które obiekty chcesz zarezerwować?">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
+            <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki">
+        </div>
 
-    </label>
-    <br/>
-
-    <label class=" col-form-label"> Do kiedy?
-        <input class="input-group-text" type="date" th:field="*{{tillWhen}}">
-
-    </label>
-
-    <br/>
-
-    <label class="col-form-label" for="who"> Kto?</label>
-    <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?">
-
-
-    <br/>
-
-    <label class="col-form-label" for="what"> Co? </label>
-    <input class="input-group-text" type="text" id="what" th:field="*{what}" value="które obiekty chcesz zarezerwować?">
-
-
-    <br/>
-
-    <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
-    <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki">
-
-
-    <br/>
-
-    <button class="btn-dark" type="submit" value="zmień rezerwację">Zmień rezerwację</button>
-</form>
-
+        <br/>
+        <br/>
+        <div class="form-group">
+            <button class="btn-dark" type="submit" value="zmień rezerwację">Zmień rezerwację</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

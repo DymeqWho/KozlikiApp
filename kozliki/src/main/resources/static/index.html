@@ -10,6 +10,7 @@
     <meta name="author" content="Dymitr Misiejuk"/>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 <header>
@@ -19,42 +20,34 @@
 <div id="menu" class="topnav">
     <span id="menu_span">Menu</span>
     <div id="myLinks">
-        <!--        <a href="#skansen_text">-->
+
 
         <button class="menu_item" id="skansen_menu" onclick="change_skansen()">Skansen w Koźlikach</button>
 
-        <!--        </a>-->
-        <!--        <a href="#imprezy_text">-->
+
 
         <button class="menu_item" id="imprezy_menu" onclick="change_imprezy()">Imprezy</button>
 
-        <!--        </a>-->
-        <!--        <a href="#aktualnosci_text">-->
+
         <button class="menu_item" id="aktualnosci_menu" onclick="change_aktualnosci()">Aktualności</button>
-        <!--        </a>-->
-        <!--        <a href="#okolica_sport_txt">-->
+
         <button class="menu_item" onclick="change_okolica_sport()">Okolica, sport i rekreacja</button>
-        <!--        </a>-->
-        <!--        <a href="#lokalizacja_text">-->
+
         <button class="menu_item" id="lokalizacja_menu" onclick="change_lokalizacja()">Lokalizacja</button>
-        <!--        </a>-->
-        <!--        <a href="#statut_text">-->
+
         <button class="menu_item" id="statut_menu" onclick="change_statut()">Działalność</button>
-        <!--        </a>-->
-        <!--        <a href="#sprawozdania_text">-->
+
         <button class="menu_item" id="sprawozdania_menu" onclick="change_sprawozdania()">Sprawozdania OPP</button>
-        <!--        </a>-->
-        <!--        <a href="#nrRachunku_text">-->
+
         <button class="menu_item" id="nrRachunku_menu" onclick="change_nrRachunku()">Nr rachunku i KRS</button>
-        <!--        </a>-->
-        <!--        <a href="#oNas_content">-->
+
         <button class="menu_item" id="oNas_menu" onclick="change_oNas()">O nas w sieci!</button>
-        <!--        </a>-->
+
         <button id="rezerwacje_button">
             <a href="/login.html">
-            <div class="menu_item" id="rezerwacje_a">
-                Rezerwacje
-            </div>
+                <div class="menu_item" id="rezerwacje_a">
+                    Rezerwacje
+                </div>
             </a>
         </button>
     </div>
@@ -375,7 +368,11 @@
 <article>
     <div id="lokalizacja_text">
         <h2>Lokalizacja</h2>
-        -->obrazek z mapą <--
+        Kliknij obraz, by przenieść się do Google Maps!
+        <div id="skansen_localization">
+            <a href="https://goo.gl/maps/yZnXMMoBSEdoyN5e7" target="_blank"> <img src="images/kozliki_mapa.jpg"
+                                                                  alt="Mapa lokalizacji skansenu"/></a>
+        </div>
     </div>
 </article>
 
@@ -747,7 +744,7 @@
 
         <br/>
 
-        <cite>
+        <cite id="narodowy_link_cite">
             <a href="https://sprawozdaniaopp.niw.gov.pl/" target="https://sprawozdaniaopp.niw.gov.pl/">
         <span id="narodowy_link">
           Narodowego Instytutu Wolności
@@ -800,43 +797,58 @@
 <section>
     <div id="oNas_content">
         <h2>O nas w sieci!</h2>
-        <div id="facebook_text">facebook</div>
+        <div id="facebook_text">
+            <a href="https://www.facebook.com/skansenkozliki" class="fa fa-facebook" target="_blank"></a>
+        </div>
+        <br/>
         <div id="rtv_text">Radio i telewizja</div>
+        <br/>
         <div id="yt_text">
-            Teledysk zespołu <a href="https://www.facebook.com/Haydamaky/" target="https://www.facebook.com/Haydamaky/">Haydamaky</a>
+            Teledysk zespołu
+            <a href="https://www.facebook.com/Haydamaky/" target="https://www.facebook.com/Haydamaky/">Haydamaky</a>
             i <a href="https://culture.pl/pl/tworca/andrzej-stasiuk"
                  target="https://culture.pl/pl/tworca/andrzej-stasiuk">Stasiuka</a>
             był kręcony między innymi w Skansenie:
+            <br/>
             <div class="movie">
                 <iframe width="360" height="202" src="https://www.youtube.com/embed/K_9GB4Po8bg" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+            <br/>
             <div id="lira"></div>
             Warsztaty lirniczne w Skansenie:
+            <br/>
             <div class="movie">
                 <iframe width="360" height="202" src="https://www.youtube.com/embed/o_knCns6tdI" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+            <br/>
             Konkurs śpiewaczy realizowany w ramach projektu &#34EtnoPodlasie&#34 w 2019 roku:
+            <br/>
             <div class="movie">
                 <iframe width="360" height="202" src="https://www.youtube.com/embed/mB7F9fZxwoo" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+            <br/>
             W Skansenie realizowany był projekt nagrania audiobooka pt. "Sońka" Ignacego Karpowicza:
+            <br/>
             <div class="movie">
                 <iframe width="360" height="202" src="https://www.youtube.com/embed/LMSW3V74Q98" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+            <br/>
             Warsztaty śpiewu z 2012 roku:
+            <br/>
             <div class="movie">
                 <iframe width="360" height="202" src="https://www.youtube.com/embed/ZpGMAEIiSE4" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
+            <br/>
         </div>
     </div>
 </section>

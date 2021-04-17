@@ -11,51 +11,56 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/reservations.css}">
 
-    <script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>Rezerwacje:</h1>
 <div id="reservation_form">
     <form th:action="@{/reservations}" method="post" class="form-control-plaintext" th:object="${newReservation}">
-        <label class="col-form-label" for="fromWhen">
-            Od kiedy?</label>
-        <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
+        <div class="form-group">
+            <label class="col-form-label" for="fromWhen">
+                Od kiedy?</label>
+            <input class="input-group-text" type="date" id="fromWhen" th:field="*{{fromWhen}}">
+        </div>
         <div class="error_class" th:if="${#fields.hasErrors('fromWhen')}" th:errors="*{fromWhen}">Błędna data
             początku rezerwacji!
         </div>
         <div class="error_class" th:if="${fromWhenError}" th:text="${fromWhenError}">fromWhenError</div>
         <div class="error_class" th:if="${overlappingError}" th:text="${overlappingError}">overlappingError</div>
 
-        <label class=" col-form-label" for="tillWhen"> Do kiedy?</label>
-        <input class="input-group-text" type="date" id="tillWhen" th:field="*{{tillWhen}}">
+        <div class="form-group">
+            <label class="col-form-label" for="tillWhen"> Do kiedy?</label>
+            <input class="input-group-text" type="date" id="tillWhen" th:field="*{{tillWhen}}">
+        </div>
         <div class="error_class" th:if="${#fields.hasErrors('tillWhen')}" th:errors="*{tillWhen}">Błędna data
             zakończenia rezerwacji!
         </div>
         <div class="error_class" th:if="${tillWhenError}" th:text="${tillWhenError}">tillWhenError</div>
 
-        <label class="col-form-label" for="who"> Kto?</label>
-        <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?"
-               placeholder="Jak się nazywasz?">
+        <div class="form-group">
+            <label class="col-form-label" for="who"> Kto?</label>
+            <input class="input-group-text" type="text" id="who" th:field="*{who}" value="jak sie nazywasz?"
+                   placeholder="Jak się nazywasz?">
+        </div>
         <div class="error_class" th:if="${#fields.hasErrors('who')}" th:errors="*{who}">Przedstaw się!</div>
 
-
-        <label class="col-form-label" for="what"> Co? </label>
-        <input class="input-group-text" type="text" id="what" th:field="*{what}"
-               value="które obiekty chcesz zarezerwować?" placeholder="Co chcesz zarezerwować?">
+        <div class="form-group">
+            <label class="col-form-label" for="what"> Co? </label>
+            <input class="input-group-text" type="text" id="what" th:field="*{what}"
+                   value="które obiekty chcesz zarezerwować?" placeholder="Co chcesz zarezerwować?">
+        </div>
         <div class="error_class" th:if="${#fields.hasErrors('what')}" th:errors="*{what}">Żeś się rozpisał... krócej
             ;-)
         </div>
 
-
-        <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
-        <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki"
-               placeholder="opcjonalne notatki...">
+        <div class="form-group">
+            <label class="col-form-label" for="notes"> Notatki/uwagi: </label>
+            <input class="input-group-text" type="text" id="notes" th:field="*{notes}" value="opcjonalne notatki"
+                   placeholder="opcjonalne notatki...">
+        </div>
         <div class="error_class" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}">Żeś się rozpisał... krócej
             ;-)
         </div>
 
-
-        <div id="clear_float"></div>
         <div id="submit_button">
             <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
         </div>
@@ -67,16 +72,22 @@
 
 <div th:each="reservation : ${reservations}" id="reservation_result">
 
-    Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span> do: <span
-        th:text="${reservation.tillWhen}"></span>
-    <br/>
-    Przez: <span th:text="${reservation.who}"></span>
-    i obejmuje: <span th:text="${reservation.what}"></span>
-    <br/>
-    Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
-    <br/>
-    Rezerwacji dokonano: <span id="when_booked" th:text="${reservation.getDateTimeOfReservation()}"></span>
-
+    <div class="reservation-value">
+        Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span>
+        <br/>
+        do: <span
+            th:text="${reservation.tillWhen}"></span>
+        <br/>
+        Przez: <span th:text="${reservation.who}"></span>
+        <br/>
+        i obejmuje: <span th:text="${reservation.what}"></span>
+        <br/>
+        Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
+        <br/>
+        <span id="reservation-time">
+        Rezerwacji dokonano: <span id="when_booked" th:text="${reservation.getDateTimeOfReservation()}"></span>
+    </span>
+    </div>
     <div sec:authorize="hasRole('ADMIN')">
         <a th:href="@{'/reservations/update/' + ${reservation.id}}">
             <button type="submit" value="edit">Edytuj</button>
@@ -95,5 +106,12 @@
     <button type="submit" value="logout">Wyloguj</button>
 </a>
 
+<br/>
+<br/>
+<footer>Towarzystwo Przyjaciół Skansenu w Koźlikach 2021 &copy; Wszelkie prawa zastrzeżone</footer>
+
 </body>
+<script>
+    document.getElementById("when_booked").innerText =
+</script>
 </html>

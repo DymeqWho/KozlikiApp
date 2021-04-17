@@ -1,8 +1,8 @@
-body{
+body {
     padding: 0;
     text-align: center;
     background-color: #d4d4b4;
-    font-family: "Arial";
+    font-family: "Arial", serif;
     color: #1a1a72;
     max-width: 1440px;
     margin: auto;
@@ -19,49 +19,60 @@ input[type=text], input[type=date], select, textarea {
     resize: vertical;
 }
 
+#reservation_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+}
+
 label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
 
-.error_class{
+.error_class {
     color: red;
     padding-top: 20px;
     padding-bottom: 20px;
     display: table;
 }
 
-.col-form-label{
-    float: left;
+.col-form-label {
     width: 10%;
     margin-top: 6px;
 }
 
-input[type=date]{
-    float: left;
+input[type=date] {
     width: 20%;
     margin-right: 70%;
     margin-top: 6px;
 }
 
-input[type=text]{
-    float: left;
+input[type=text] {
     width: 20%;
     margin-right: 70%;
     margin-top: 6px;
 }
-#clear_float{
+
+#clear_float {
     content: "";
     display: table;
     clear: both;
 }
-#submit_button{
+
+#submit_button {
     margin-top: 20px;
 }
 
 button {
     border-radius: 12px;
     max-width: 150px;
+    padding: 15px 32px;
+    margin: 2px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -70,11 +81,44 @@ button:hover {
     cursor: pointer;
 }
 
+.reservation-value{
+    margin-bottom: 10px;
+}
+
+.reservation-value span{
+    color: green;
+    font-weight: bold;
+    font-size: larger;
+}
+#reservation-time{
+    font-weight: lighter;
+    font-size: x-small;
+    text-decoration: underline;
+}
+
+footer{
+    margin-top: 25%;
+    margin-bottom: 5px;
+}
+
 @media screen and (max-width: 768px) {
     .input-group-text, .col-form-label,
     input[type=submit], input[type=date], input[type=text] {
         width: 100%;
         margin-top: 0;
     }
-
+    .form-group{
+        padding-top: 3px;
+        padding-bottom: 2px;
+    }
+    .form-group input{
+        margin-right: 2%;
+    }
+    .btn-dark{
+        margin-left: 40%;
+    }
+    button{
+        padding: 7px 16px;
+        margin: 2px;
+    }
 }

@@ -7,7 +7,7 @@ body {
     padding: 0;
     text-align: center;
     background-color: #d4d4b4;
-    font-family: "Arial";
+    font-family: "Arial", serif;
     color: #1a1a72;
     max-width: 1440px;
     margin: auto;
@@ -73,7 +73,7 @@ button:hover {
     cursor: pointer;
 }
 
-#rezerwacje_a:hover{
+#rezerwacje_a:hover {
     color: chocolate;
 }
 
@@ -106,7 +106,47 @@ article li {
 footer {
     padding-top: 5%;
     padding-bottom: 5px;
+    margin-top: 16%;
 }
+
+#skansen_localization {
+    margin-top: 10px;
+}
+
+#skansen_localization a {
+    cursor: pointer;
+}
+
+#skansen_localization a:hover{
+    opacity: 0.9;
+}
+
+#narodowy_link{
+    text-decoration: underline;
+}
+
+#narodowy_link:hover{
+    color: chocolate;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
 
 @media screen and (max-width: 768px) {
     body {
@@ -180,5 +220,9 @@ footer {
         opacity: 0.9;
     }
 
-
+    #skansen_localization {
+        margin-left: -10%;
+        width: 80%;
+        height: 80%;
+    }
 }
