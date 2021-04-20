@@ -8,7 +8,7 @@ body {
     text-align: center;
     background-color: #d4d4b4;
     font-family: "Arial", serif;
-    color: #1a1a72;
+    color: black;
     max-width: 1440px;
     margin: auto;
 }
@@ -32,12 +32,15 @@ h2 {
 
 a:link {
     text-decoration: none;
-    color: black;
+    color: blue;
+}
+a:hover{
+    color: chocolate;
 }
 
 a:visited {
     text-decoration: none;
-    color: black;
+    color: #121280;
 }
 
 #menu_span {

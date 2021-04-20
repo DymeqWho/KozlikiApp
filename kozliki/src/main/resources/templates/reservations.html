@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:javascript="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Rezerwacje</title>
@@ -35,6 +35,7 @@
             zakończenia rezerwacji!
         </div>
         <div class="error_class" th:if="${tillWhenError}" th:text="${tillWhenError}">tillWhenError</div>
+        <div class="error_class" th:if="${overlappingError}" th:text="${overlappingError}">overlappingError</div>
 
         <div class="form-group">
             <label class="col-form-label" for="who"> Kto?</label>
@@ -65,42 +66,46 @@
             <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
         </div>
 
+        <a th:href="@{/reservations}">
+            <button type="button">Pokaż rezerwacje</button>
+        </a>
+
     </form>
 </div>
 
 <br/>
 
-<div th:each="reservation : ${reservations}" id="reservation_result">
+<div id="forJs">
+    <div th:each="reservation : ${reservations}" id="reservation_result">
 
-    <div class="reservation-value">
-        Rezerwacja dokonana od: <span th:text="${reservation.fromWhen}"></span>
-        <br/>
-        do: <span
-            th:text="${reservation.tillWhen}"></span>
-        <br/>
-        Przez: <span th:text="${reservation.who}"></span>
-        <br/>
-        i obejmuje: <span th:text="${reservation.what}"></span>
-        <br/>
-        Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
-        <br/>
-        <span id="reservation-time">
+        <div class="reservation-value">
+            Rezerwacja dokonana od: <span class="fromWhen_result" th:text="${reservation.fromWhen}"></span>
+            <br/>
+            do: <span class="tillWhen_result" th:text="${reservation.tillWhen}"></span>
+            <br/>
+            Przez: <span th:text="${reservation.who}"></span>
+            <br/>
+            i obejmuje: <span th:text="${reservation.what}"></span>
+            <br/>
+            Dodatkowe informacje: <span th:text="${reservation.notes}"></span>
+            <br/>
+            <span id="reservation-time">
         Rezerwacji dokonano: <span id="when_booked" th:text="${reservation.getDateTimeOfReservation()}"></span>
     </span>
-    </div>
-    <div sec:authorize="hasRole('ADMIN')">
-        <a th:href="@{'/reservations/update/' + ${reservation.id}}">
-            <button type="submit" value="edit">Edytuj</button>
-        </a>
-        <form th:action="@{'/reservations/delete/' + ${reservation.id}}" th:method="post">
-            <button type="submit" value="delete">
-                Usuń
-            </button>
-        </form>
-    </div>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{'/reservations/update/' + ${reservation.id}}">
+                <button type="submit" value="edit">Edytuj</button>
+            </a>
+            <form th:action="@{'/reservations/delete/' + ${reservation.id}}" th:method="post">
+                <button type="submit" value="delete">
+                    Usuń
+                </button>
+            </form>
+        </div>
 
+    </div>
 </div>
-
 <br/>
 <a th:href="@{'/logout'}">
     <button type="submit" value="logout">Wyloguj</button>
@@ -111,7 +116,5 @@
 <footer>Towarzystwo Przyjaciół Skansenu w Koźlikach 2021 &copy; Wszelkie prawa zastrzeżone</footer>
 
 </body>
-<script>
-    document.getElementById("when_booked").innerText =
-</script>
+
 </html>

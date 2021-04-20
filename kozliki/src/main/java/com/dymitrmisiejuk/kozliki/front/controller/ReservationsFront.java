@@ -57,7 +57,7 @@ public class ReservationsFront implements WebMvcConfigurer {
             LocalDate tillWhen = reservationFrontRequest.getTillWhen();
             boolean isValidTillWhen = dateExceptions.isDateValid(fromWhen, tillWhen);
             boolean isValidTimeInDays = dateExceptions.isReservationValidTime(fromWhen, tillWhen);
-//            boolean isReservationOverlapsAnotherReservation = dateExceptions.isReservationOverlapsAnotherReservation(fromWhen, tillWhen);
+            boolean isReservationOverlapsAnotherReservation = dateExceptions.isReservationValid(this.reservationRepository, fromWhen, tillWhen);
 
             if (!isValidFromWhen || !isValidTillWhen) {
                 if (fromWhen.isAfter(tillWhen)) {
@@ -69,15 +69,14 @@ public class ReservationsFront implements WebMvcConfigurer {
                 model.addAttribute("fromWhenError", "Data nie może być wcześniejsza niż dzisiejsza!");
                 model.addAttribute("tillWhenError", "Data musi być co najmniej dzisiejsza i nie może być wcześniejsza niż ta \"od kiedy\".");
                 return "reservations";
-            }
-            if (!isValidTimeInDays) {
+            } else if (!isValidTimeInDays) {
                 model.addAttribute("tillWhenError", "Cały termin rezerwacji nie może być dłuższy niż 4 dni!");
                 return "reservations";
+            } else if (!isReservationOverlapsAnotherReservation) {
+                model.addAttribute("overlappingError", "Ten termin koliduje z innym!");
+                return "reservations";
             }
-//            if(isReservationOverlapsAnotherReservation){
-//                model.addAttribute("overlappingError", "Ktoś już dokonał rezerwacji w tym terminie!");
-//                return "reservations";
-//            }
+
         }
         reservationService.createReservation(ReservationRequest.builder()
                 .fromWhen(reservationFrontRequest.getFromWhen())
