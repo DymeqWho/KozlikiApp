@@ -1,28 +1,64 @@
 html {
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
+    /*line-height: 1.15;*/
+    /*-webkit-text-size-adjust: 100%;*/
 }
+
 
 body {
     padding: 0;
     text-align: center;
-    background-color: #d4d4b4;
     font-family: "Arial", serif;
-    color: black;
+    font-size: larger;
     max-width: 1440px;
     margin: auto;
+    color: black;
+    font-weight: bold;
+}
+
+#container{
+    background-image: url("/images/background2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.175;
+    width: 1440px;
+    height: 100%;
+    position: fixed;
+    z-index: -9;
+
+}
+
+#rezerwacje_button a{
+    color: black;
 }
 
 article, section {
     display: none;
 }
 
-#skansen_article {
-    display: block;
+label{
+    color: black;
+    font-weight: bolder;
 }
 
+input, button{
+    background-color: #c7c4be;
+    z-index: 1;
+    opacity: 1;
+}
+
+#skansen_article #yt_text{
+    opacity: 1;
+}
+
+#skansen_article {
+    display: block;
+    padding-bottom: 6%;
+    }
+
 h1 {
-    font-size: 250%;
+    font-size: 350%;
 }
 
 h2 {
@@ -32,15 +68,20 @@ h2 {
 
 a:link {
     text-decoration: none;
-    color: blue;
+    color: #0000ff;
 }
-a:hover{
-    color: chocolate;
+
+a:hover {
+    color: #d2691e;
 }
 
 a:visited {
     text-decoration: none;
-    color: #121280;
+    color: #0000ff;
+}
+
+a:visited:hover{
+    color: #cd6925;
 }
 
 #menu_span {
@@ -63,6 +104,7 @@ header {
     background-color: #1a1a72;
     padding-top: 5px;
     padding-bottom: 5px;
+    z-index: 10;
 }
 
 button {
@@ -92,6 +134,7 @@ button:hover {
 article {
     max-width: 90%;
     margin: auto;
+    line-height: 1.5;
 }
 
 article p {
@@ -107,7 +150,7 @@ article li {
 }
 
 footer {
-    padding-top: 5%;
+    padding-top: 10px;
     padding-bottom: 5px;
     margin-top: 16%;
 }
@@ -120,15 +163,15 @@ footer {
     cursor: pointer;
 }
 
-#skansen_localization a:hover{
+#skansen_localization a:hover {
     opacity: 0.9;
 }
 
-#narodowy_link{
+#narodowy_link {
     text-decoration: underline;
 }
 
-#narodowy_link:hover{
+#narodowy_link:hover {
     color: chocolate;
 }
 
@@ -150,18 +193,56 @@ footer {
     color: white;
 }
 
+a.fa.fa-facebook::before {
+    color: white;
+}
 
-@media screen and (max-width: 768px) {
+.movie {
+    margin-top: 5px;
+}
+
+#format-statut-text p {
+    text-align: center;
+}
+
+#format-statut-text .format-text {
+    text-align: justify;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+@media screen and (min-width: 640px) and (max-width: 1080px){
+    h1 {
+        font-size: 150%;
+    }
+}
+
+@media screen and (max-width: 639px) {
     body {
         max-width: 90%;
     }
 
     h1 {
-        font-size: 175%;
+        font-size: 150%;
     }
 
     h2 {
         font-size: 130%;
+    }
+
+    #container{
+        max-width: 90%;
+    }
+
+    .topnav {
+        position: center;
+        position: -webkit-sticky;
+        top: 0;
+        position: sticky;
+        overflow: hidden;
+
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
     }
 
     #hamburger_icon {
@@ -170,11 +251,7 @@ footer {
         position: absolute;
         right: 0;
         top: 0;
-
         color: white;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
     }
 
     #hamburger_icon a {
@@ -191,16 +268,9 @@ footer {
         position: sticky;
     }
 
-    .topnav {
-        position: center;
-        position: -webkit-sticky;
-        top: 0;
-        position: sticky;
-        overflow: hidden;
-    }
-
     #menu_span {
         display: block;
+        color: white;
     }
 
     .topnav #myLinks {
@@ -208,7 +278,8 @@ footer {
     }
 
     #myLinks {
-        position: fixed;
+        margin-top: 45px;
+        position: sticky;
     }
 
     button {
@@ -227,5 +298,11 @@ footer {
         margin-left: -10%;
         width: 80%;
         height: 80%;
+    }
+
+    #format-statut-text .format-text {
+        text-align: left;
+        margin-left: 2%;
+        margin-right: 2%;
     }
 }

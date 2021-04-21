@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:javascript="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Rezerwacje</title>
@@ -10,9 +10,82 @@
     <meta name="author" content="Dymitr Misiejuk"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/reservations.css}">
-
+    <script type="text/javascript" th:src="@{/js/reservations.js}"></script>
 </head>
 <body>
+<div id="top-margin">
+    <button type="button" id="button-regulamin" th:onclick="hideAndShowRegulamin()">Pokaż/schowaj regulamin rezerwacji:</button>
+    <a id="top-logout" th:href="@{'/logout'}">
+        <button type="submit" value="logout">Wyloguj</button>
+    </a>
+    <div id="regulamin">
+        <h3>Regulamin rezerwacji Internetowych:</h3>
+        <p>1. Rezerwacji może dokonać tylko osoba do tego upoważniona przez Towarzystwo Przyjaciół Skansenu w Koźlikach
+            (TPSwK) na terenie Skansenu (Obiektu). Administrator może usunąć niewłaściwe rezerwacje.
+            - kontakt do administratora:</p>
+        <address><a href="mailto:skansen.kozliki@gmail.com">skansen.kozliki@gmail.com</a></address>
+
+        <p>
+            2. W celu dokonania rezerwacji niezbędne jest podanie daty od kiedy się ona zaczyna, do kiedy trwa i
+            podpisu.
+            Bez tych informacji nie można złożyć poprawnej rezerwacji. Domyślnie brak wpisu w rubryce „co?” oznacza
+            rezerwację całego Obiektu, notatki/uwagi są opcjonalne. Wpisanie jakiegoś obiektu w rubryce „co?” oznacza
+            tyle,
+            że osoba rezerwująca termin nie ma nic przeciwko, by inne osoby mogły przyjechać i korzystać z pozostałych
+            obiektów, ale mimo wszystko ciągle jest główną osobą odpowiedzialną za utrzymanie porządku na terenie całego
+            Obiektu.
+        <p>
+        <p>
+        3. <u>Dyżury weekendowe zawsze i domyślnie mają priorytet nad innymi rezerwacjami</u>. Informacje o dyżurach
+            dostarczane są co roku na e-maile członków TPSwK i nie muszą być oznaczone w tym systemie rezerwacji.
+            Niewłaściwe rezerwacje, gdy kolidują z rezerwacjami weekendowymi, mogą zostać usunięte z listy rezerwacji
+            przez
+            administratora. Można natomiast zanotować ewentualne wymiany dyżurów między członkami TPSwK, właściwie je
+            opisując we wskazanych do tego miejscach formularza, tak jakby dokonywać zwykłej rezerwacji z opisem w
+            notatkach/uwagach, że to jest wymiana między kim a kim. Potwierdzenie wymiany proszę też przesłać przez
+            osobę
+            podmieniającą swój termin na e-mail administratora: skansen.kozliki@gmail.com żeby taka notatka/rezerwacja
+            na
+            liście nie została usunięta jako niewłaściwa, kolidująca z priorytetowym dyżurem weekendowym.
+        </p>
+        <p>
+            4. Rezerwacji jednorazowo można dokonać maksymalnie na 4 dni kalendarzowe.
+        </p>
+        <p>
+            5. Żaden dzień rezerwacji nie może kolidować z dowolnym dniem innej rezerwacji.
+            Tips: jeżeli zamierzasz rano po swojej rezerwacji opuścić Obiekt, dokonaj rezerwacji do dnia ostatniego
+            noclegu.
+            Nie zablokujesz w ten sposób rezerwacji dnia, w którym już Ciebie nie będzie. W innym wypadku ten dzień
+            liczy
+            się jako Twoja rezerwacja i za niego w pełni odpowiadasz. Nie zwalnia to też Ciebie z obowiązku posprzątania
+            po
+            swojej rezerwacji! Jeżeli się pomylisz, możesz napisać e-mail do administratora na:
+            skansen.kozliki@gmail.com
+            żeby edytował błędny termin.
+        </p>
+        <p>
+            6. Po poprawnie złożonej deklaracji rezerwacji, pojawi się ona na liście dokonanych rezerwacji. Rezerwacja
+            zostanie opatrzona sygnaturą czasową w celu potwierdzenia jej poprawności i dokumentacji.
+        </p>
+        <p>
+            7. Osoba deklarująca rezerwację, w pełni odpowiada za Obiekt, porządek i bezpieczeństwo w trakcie trwania
+            rezerwacji.
+        </p>
+        <p>
+            8. Pamiętaj, że rezerwacja nie sprawia, że Obiekt staje się na ten czas Twoją własnością. Stajesz się jego
+            opiekunem i jako opiekun nim zarządzasz. Uszanujmy swoją prywatność i nie bądźmy dla siebie wścibscy.
+        </p>
+        <p>
+            9. Rezerwacje, których termin „do kiedy?” już minął, będą usuwane z listy po pewnym czasie przez
+            administratora.
+        </p>
+        <p>
+            10. Złożenie deklaracji rezerwacji za pomocą formularza jest równoznaczne z akceptacją tego Regulaminu.
+        </p>
+
+    </div>
+
+</div>
 <h1>Rezerwacje:</h1>
 <div id="reservation_form">
     <form th:action="@{/reservations}" method="post" class="form-control-plaintext" th:object="${newReservation}">
@@ -63,7 +136,7 @@
         </div>
 
         <div id="submit_button">
-            <button class="btn-dark" type="submit" value="zarezerwuj">Zarezerwuj</button>
+            <button class="btn-dark" type="submit" value="zarezerwuj">Akceptuję regulamin i rezerwuję</button>
         </div>
 
         <a th:href="@{/reservations}">
@@ -107,7 +180,7 @@
     </div>
 </div>
 <br/>
-<a th:href="@{'/logout'}">
+<a id="bottom-logout" th:href="@{'/logout'}">
     <button type="submit" value="logout">Wyloguj</button>
 </a>
 

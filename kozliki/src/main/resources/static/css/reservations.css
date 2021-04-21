@@ -12,6 +12,21 @@ body {
     box-sizing: border-box;
 }
 
+h3, address {
+    text-align: center;
+}
+
+h1, h3 {
+    margin-top: 5px;
+}
+
+#regulamin {
+    display: none;
+    text-align: justify;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
 input[type=text], input[type=date], select, textarea {
     padding: 12px;
     border: 1px solid #ccc;
@@ -81,22 +96,23 @@ button:hover {
     cursor: pointer;
 }
 
-.reservation-value{
+.reservation-value {
     margin-bottom: 10px;
 }
 
-.reservation-value span{
+.reservation-value span {
     color: green;
     font-weight: bold;
     font-size: larger;
 }
-#reservation-time{
+
+#reservation-time {
     font-weight: lighter;
     font-size: x-small;
     text-decoration: underline;
 }
 
-footer{
+footer {
     margin-top: 25%;
     margin-bottom: 5px;
 }
@@ -107,18 +123,47 @@ footer{
         width: 100%;
         margin-top: 0;
     }
-    .form-group{
+
+    .form-group {
         padding-top: 3px;
         padding-bottom: 2px;
     }
-    .form-group input{
+
+    .form-group input {
         margin-right: 2%;
     }
-    .btn-dark{
+
+    .btn-dark {
         margin-left: 40%;
     }
-    button{
+
+    button {
         padding: 7px 16px;
         margin: 2px;
+    }
+
+    h1, h3 {
+        margin-top: 70px;
+    }
+
+    #top-margin {
+        position: relative;
+    }
+
+    #top-logout {
+        position: fixed;
+        top: 2px;
+        right: 2px;
+    }
+
+    #button-regulamin {
+        top: 2px;
+        right: 100px;
+        position: fixed;
+
+    }
+
+    #bottom-logout {
+        display: none;
     }
 }

@@ -53,7 +53,7 @@ public class DateExceptions {
             int[] localDayArr;
 
 
-            for (int i = 0; i < howLongIsRepo; i++) {
+            for (int i = howLongIsRepo; i >= 0; i--) {
                 try {
                     localDateFromWhen = reservationRepository.getOne((long) i + 1).getFromWhen();
                     localDateTilLWhen = reservationRepository.getOne((long) i + 1).getTillWhen();
